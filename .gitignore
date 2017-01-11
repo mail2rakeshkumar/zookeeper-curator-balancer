@@ -10,3 +10,35 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# others
+*.so
+*.log
+*.out
+*~
+*.swp
+*.DS_Store
+*.lock
+*.svn
+*.iml
+*.zip
+*nblibraries.properties
+*nb-configuration.xml
+*.bak
+
+**/build
+**/build/classes
+**/classes
+**/dist
+**/.idea
+**/nbproject
+**/target
+
+**/nbproject/private
+*/.classpath
+*/.project
+*/.settings/*
+*.settings/*
+.metadata/*
+.recommenders/
+
