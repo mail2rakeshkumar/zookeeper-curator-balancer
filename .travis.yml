@@ -1,0 +1,7 @@
+language: java
+sudo: false
+jdk:
+  - oraclejdk8
+script: cd simple-manager && mvn clean pacakge
+script: cd simple-worker && mvn clean package
+
