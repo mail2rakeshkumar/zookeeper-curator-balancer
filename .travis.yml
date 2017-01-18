@@ -6,4 +6,4 @@ env:
   - BUILD_DIR=simple-manager
   - BUILD_DIR=simple-worker
   
-script: cd $BUILD_DIR && mvn clean pacakge
+script: cd $BUILD_DIR && mvn clean package
