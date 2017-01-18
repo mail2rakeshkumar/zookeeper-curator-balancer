@@ -2,6 +2,8 @@ language: java
 sudo: false
 jdk:
   - oraclejdk8
-script: cd simple-manager && mvn clean pacakge
-script: cd simple-worker && mvn clean package
-
+env:
+  - BUILD_DIR=simple-manager
+  - BUILD_DIR=simple-worker
+  
+script: cd $BUILD_DIR && mvn clean pacakge
