@@ -1,11 +1,19 @@
 package com.msamayoa.utils;
 
-public final class Utils {
+import org.apache.commons.lang3.Validate;
 
+/**
+ * 
+ * @author msamayoa
+ * Utility class
+ */
+public final class Utils {
+	
+	private final static int DEFAULT_PORT = 8080;
+	
 	public static int getIntParameter(String arg){
-		System.out.println("*********************** args:========>" + arg);
-				
-		int port = 8080; //default port
+		Validate.notNull(arg);
+		int port = DEFAULT_PORT;
 		String vals[] = arg.split("=");
 		if(vals.length>=2){
 			port = Integer.parseInt(vals[1]);
@@ -14,8 +22,8 @@ public final class Utils {
 	}
 	
 	public static int fromStringToInt(String arg){
-		System.out.println("*********************** args:========>" + arg);				
-		int port = 8080; //default port		
+		Validate.notNull(arg);
+		int port = DEFAULT_PORT;		
 		if(arg!=null){
 			port = Integer.parseInt(arg);
 		}

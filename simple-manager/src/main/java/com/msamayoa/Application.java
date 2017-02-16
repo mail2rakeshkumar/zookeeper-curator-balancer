@@ -1,8 +1,11 @@
 package com.msamayoa;
 
+import java.util.concurrent.TimeUnit;
+
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.RetryNTimes;
+import org.apache.curator.x.discovery.DownInstancePolicy;
 import org.apache.curator.x.discovery.ServiceDiscovery;
 import org.apache.curator.x.discovery.ServiceDiscoveryBuilder;
 import org.apache.curator.x.discovery.ServiceProvider;
@@ -16,7 +19,7 @@ public class Application {
 	
 	private static final Logger logger = LoggerFactory.getLogger(Application.class);
 	private static ServiceProvider<Object> serviceProvider;
-	
+		
 	public static void main(String[] args) {		
         SpringApplication.run(Application.class, args);
         try{
@@ -32,14 +35,15 @@ public class Application {
 		curatorFramework.start();
 
 		ServiceDiscovery<Object> serviceDiscovery = ServiceDiscoveryBuilder.builder(Object.class)
-				.basePath("load-balancing-example")
-				.client(curatorFramework)
+				.basePath("load-balancing-api")
+				.client(curatorFramework)				
 				.build();
 		serviceDiscovery.start();
 		
 		serviceProvider = serviceDiscovery
 				.serviceProviderBuilder()
 				.serviceName("worker")
+				.downInstancePolicy(new DownInstancePolicy(1000, TimeUnit.MILLISECONDS, 1))
 				.build();
 		
 		serviceProvider.start();
@@ -47,6 +51,6 @@ public class Application {
 	
 	public static ServiceProvider<Object> getServiceProvider(){
 		return serviceProvider;
-	}	
+	}
 	
 }

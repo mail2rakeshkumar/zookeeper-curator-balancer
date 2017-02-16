@@ -38,13 +38,13 @@ public class Application {
 	        		.build();
        
 	        ServiceDiscoveryBuilder.builder(CustomPayload.class)
-	        .basePath("load-balancing-example")
+	        .basePath("load-balancing-api")
 	        .client(curatorFramework)        
 	        .thisInstance(serviceInstance)
 	        .build()
 	        .start();
         }catch(Exception e){
-        	System.out.println(e.getMessage());
+        	System.err.println(e.getMessage());
         }
 	}
 	
