@@ -5,6 +5,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.msamayoa.beans.CustomerBean;
 import com.msamayoa.beans.WorkerBean;
 import com.msamayoa.utils.Utils;
 
@@ -39,6 +40,11 @@ public class ArgumentsConfigurator {
 			logger.error("invalid args");
 		}
 		return workerBean;
+	}
+	
+	@Bean
+	public CustomerBean createCustomerBean(){
+		return new CustomerBean();
 	}
 	
 }

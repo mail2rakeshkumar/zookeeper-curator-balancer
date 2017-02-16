@@ -1,5 +1,6 @@
 package com.msamayoa.controller;
 
+
 public class CustomPayload {
 	
 	private String name;
